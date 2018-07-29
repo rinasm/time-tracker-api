@@ -23,3 +23,13 @@ exports.getTrackPoint = function (req, res) {
         else        utils.failReply(err, msg, res);
     }, mysql.queryReturn(querystr, body));
 };
+
+exports.getLastPoint = function (req, res) {
+    body = [req.body.userid]
+    var querystr = "select * from trackerpoints where userid = ? order by time desc limit 1";
+
+    mysql.getmysqlconnandrun(function (err, data, msg) {
+        if (!err)   utils.succReply(data, msg, res);
+        else        utils.failReply(err, msg, res);
+    }, mysql.queryReturn(querystr, body));
+};
