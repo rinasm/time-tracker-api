@@ -12,4 +12,8 @@ module.exports = function(app, console) {
     app.post('/api/tracker/getpoints', function (req, res) {
         tracker.getTrackPoint(req, res);
     });
+
+    app.post('/api/tracker/lastpoint', function (req, res) {
+        tracker.getLastPoint(req, res);
+    });
 };
